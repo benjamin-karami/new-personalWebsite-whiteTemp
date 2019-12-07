@@ -504,7 +504,7 @@ input[type="checkbox"] {
 
 .addo-hero {
     min-height: 560px;
-    background: #fff url(../images/loader.gif) no-repeat center center;
+    background: #fff url(../img/loader.gif) no-repeat center center;
     width: 100%;
     float: left;
     margin-bottom: 0;
