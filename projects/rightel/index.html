@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>ثبت نام سیمکارت</title>
+  </head>
+  <body>
+    <section id="main-content">
+      <div id="contents">
+        <div id="error-message">
+          <p class="error-message">error</p>
+        </div>
+        <div id="top-nav">
+          <div id="step">
+            <div class="step-content">
+              <p class="primary-text">مشخصات فردی</p>
+              <p class="secondary-text">مرحله 1 از 4</p>
+            </div>
+            <div class="step-img">
+              <img src="./assets/img/rightel-logo.png" alt="RighTel-Logo" />
+            </div>
+          </div>
+          <div class="step-progress">
+            <div class="progressbar">
+              <div class="progress active">
+                <span class="progress-img-box">
+                  <img src="./assets/img/clipboard-color.png" alt="" />
+                </span>
+                <p>مشخصات</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/location-black.png" alt="" />
+                </span>
+                <p>آدرس</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/edit-black.png" alt="" />
+                </span>
+                <p>ویرایش</p>
+              </div>
+              <div class="progress">
+                <span class="progress-img-box">
+                  <img src="./assets/img/done-black.png" alt="" />
+                </span>
+                <p>تایید نهایی</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="userStatus primary-text">
+          <p>شما جزء کدام یک از موارد زیر هستید :</p>
+          <ul>
+            <li>
+              <input
+                id="simOwner"
+                type="radio"
+                name="radio"
+                value="1"
+                checked
+              />
+              <label for="simOwner" class="primary-text"
+                >دارای سیم‌کارت در اپراتورها</label
+              >
+            </li>
+            <li>
+              <input id="noSim" type="radio" name="radio" value="2" />
+              <label for="noSim" class="primary-text"
+                >فاقد سیم‌کارت در اپراتورها</label
+              >
+            </li>
+          </ul>
+        </div>
+        <form
+          id="numberSend-form"
+          name="numberSend-form"
+          class="form"
+          method="POST"
+          action=""
+        >
+          <div class="input-container">
+            <label class="primary-text"
+              >کد ملی <span class="primary-color">*</span></label
+            >
+            <input
+              id="identity-number"
+              type="text"
+              oninput="this.value = this.value.replace(/[^0-9۰-۹٠-٩]/g, '')"
+              maxlength="10"
+            />
+          </div>
+          <div class="input-container top-margin">
+            <label class="primary-text"
+              >شماره تلفن همراه <span class="primary-color">*</span></label
+            >
+            <input
+              id="cellPhone-number"
+              type="tel"
+              name="Msisdn"
+              pattern="/^-?\d+\.?\d*$/"
+              onKeyPress="if(this.value.length==11) return false;"
+            />
+          </div>
+          <div class="terms">
+            <input
+              class="inp-cbx"
+              id="cbx"
+              type="checkbox"
+              style="display: none;"
+            />
+            <label class="cbx" for="cbx"
+              ><span class="checkboxi">
+                <svg width="12px" height="10px" viewbox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline></svg></span
+              ><span class="primary-text">
+                <strong class="primary-color" id="modalTrigger"
+                  >شرایط ثبت نام و خرید</strong
+                >
+                رایتل را می‌پذیرم</span
+              ></label
+            >
+          </div>
+          <p id="errorForInvalidInfo" class="error"></p>
+          <div class="btn-container">
+            <a id="msisdn-submit" class="btn-primary" href="#">ارسال</a>
+          </div>
+        </form>
+      </div>
+      <div id="Modalcontent" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div><span class="close">×</span></div>
+          <div class="term-content">
+            <ul>
+              <li class="main-list">
+                1. بر اساس آیین‌نامه ابلاغی از سوی وزارت ارتباطات به اپراتورهای
+                تلفن همراه در کشور، حداکثر سقف مجاز واگذاری سیم‌کارت فعال به
+                مشترکین حقیقی 10 عدد می باشد.
+              </li>
+              <li class="main-list">
+                2. امکان واگذاری سیم کارت به افراد کمتر از 18 سال وجود ندارد.
+              </li>
+              <li class="main-list">
+                3. صحت ورود اطلاعات مختلف (شامل اطلاعات فردی و شناسنامه ای،
+                آدرس، کدپستی و ...) به عهده متقاضی است. در صورتی که در هر
+                مرحله‌ای (قبل و یا بعد از ارسال سیم کارت) عدم صحت اطلاعات مشخص
+                گردد، رایتل حق قطع و سلب امتیاز سیم کارت متقاضی را خواهد داشت.
+              </li>
+              <li class="main-list">
+                4. در حال حاضر فقط اشخاص حقیقی امکان ثبت نام و خرید اینترنتی
+                دارند. شرکت ها و سایر اشخاص حقوقی جهت خرید سیم کارت با فروشگاه
+                های رایتل تماس برقرار نمایند. استفاده از امکانات فناوری نسل سوم
+                و چهارم تلفن همراه به ابزارهای ارتباطی مناسب این نسل نیاز دارد.
+                از این رو و برای آگاهی رسانی و راهنمایی مشتریان سیم کارت های
+                رایتل، فهرست کامل گوشی های با قابلیت پشتیبانی از فناوری نسل سوم
+                و چهارم، در سایت رایتل در قسمت راهنمای مشتریان / زندگی هوشمند،
+                ارائه شده است.
+              </li>
+              <li class="main-list">
+                5. جهت اطلاع از چرخه عمر سیم کارت ها به منوی محصولات و خدمات /
+                محصولات، مراجعه فرمایید.
+              </li>
+              <li class="main-list">
+                6. پس از خرید سیم کارت، دستگاه، خدمات و بسته های مصرفی رایتل،
+                امکان برگشت از خرید و استرداد وجه وجود ندارد.
+              </li>
+              <li class="main-list">
+                7. چنانچه مشترک ظرف مدت 3 ماه اقدام به پیگیری خرید خود نکند،
+                دریافت سیم کارت جدید بر اساس قوانین رایتل خواهد بود.
+              </li>
+              <li class="main-list">
+                8. براساس ابلاغیه سازمان تنظیم مقررات و ارتباطات رادیویی،ضروریست
+                اتباع غیر ایرانی جهت ثبت نام و خرید سیم کارت های رایتل به
+                فروشگاه ها و باجه های رایتل یا نمایندگان فروش و خدمات مراجعه
+                نمایند.
+              </li>
+              <li class="main-list">
+                9. دریافت قرارداد سیم‌کارت‌ها از طریق زیر امکان‌پذیر می‌باشد:
+                <ul>
+                  <li>
+                    <a
+                      class="primary-color"
+                      target="_blank"
+                      href="https://reg.rightel.ir/Content/images/Contract/SIM-dayemi-970925.jpg"
+                      >سیم‌کارت دایمی</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="primary-color"
+                      target="_blank"
+                      href="https://reg.rightel.ir/Content/images/Contract/SIM-Etebari-%D8%AD%D9%82%DB%8C%D9%82%DB%8C-01.jpg"
+                      >سیم‌کارت اعتباری</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/jquery.inputmask.bundle.min.js"></script>
+    <script>
+      //modal script
+      // Get the modal
+      var modal = document.getElementById("Modalcontent");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("modalTrigger");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function() {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+      modal.onclick = function() {
+        modal.style.display = "none";
+      };
+
+      // check box
+
+      // end modal script
+
+      $(document).ready(function() {
+        var ussdMci = true;
+        $("#simOwner").on("click", function() {
+          $("form")
+            .get(0)
+            .setAttribute("action", "/Registration/CheckEligibility"); //this works
+          $("#cellPhone-number").attr("name", "Msisdn");
+          $("#cellPhone-number")
+            .parent()
+            .show();
+        });
+
+        $("#noSim").on("click", function() {
+          $("form")
+            .get(0)
+            .setAttribute("action", "/Registration/ConfirmOtp"); //this works
+          $("#cellPhone-number").removeAttr("name");
+          $("#cellPhone-number")
+            .parent()
+            .hide();
+          ussdMci = true;
+        });
+
+        var persianNumbers = [
+            /۰/g,
+            /۱/g,
+            /۲/g,
+            /۳/g,
+            /۴/g,
+            /۵/g,
+            /۶/g,
+            /۷/g,
+            /۸/g,
+            /۹/g
+          ],
+          arabicNumbers = [
+            /٠/g,
+            /١/g,
+            /٢/g,
+            /٣/g,
+            /٤/g,
+            /٥/g,
+            /٦/g,
+            /٧/g,
+            /٨/g,
+            /٩/g
+          ],
+          fixNumbers = function(str) {
+            if (typeof str === "string") {
+              for (var i = 0; i < 10; i++) {
+                str = str
+                  .replace(persianNumbers[i], i)
+                  .replace(arabicNumbers[i], i);
+              }
+            }
+            return str;
+          };
+        $("#msisdn-submit").click(function(e) {
+          e.preventDefault();
+          var checkbox = $("#cbx");
+          var identity = $("#identity-number").val();
+          var msisdn = $("#cellPhone-number").val();
+          identity = fixNumbers(identity);
+          msisdn = msisdn.replace("_", "");
+          msisdn = fixNumbers(msisdn);
+          var ussdMtn = /(\+989|9|09)(30|33|35|36|37|38|39|01|02|03|04|05)\d{7}/.test(
+            msisdn
+          );
+          var ussdRigh = /(\+989|9|09)(21|22|23|24|25|26|27|28|29)\d{7}/.test(
+            msisdn
+          );
+
+          ussdMci = /(^(\+989|9|09)(90|91|92)\d{7}$)|(^(\+9891|91|091)[0-9]\d{7}$)/.test(
+            msisdn
+          );
+
+          if ($("#noSim").is(":checked")) {
+            ussdMci = true;
+            msisdn = "09120000000";
+          }
+
+          if (
+            (ussdMci && identity.length === 10 && checkbox.is(":checked")) ||
+            (ussdMtn && identity.length === 10 && checkbox.is(":checked")) ||
+            (ussdRigh && identity.length === 10 && checkbox.is(":checked"))
+          ) {
+            // $("#numberSend-form").submit();
+            console.log(msisdn);
+          } else {
+            if (!(identity.length === 10)) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("کد ملی خود را کامل وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (msisdn.length < 11 && identity.length === 10) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("شماره همراه کامل وارد کنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (!checkbox.is(":checked")) {
+              $("#error-message").css("display", "flex");
+              $("#error-message").addClass("slide-in-top");
+              $(".error-message").html("لطفا شرایط و قوانین را تیک بزنید");
+              setTimeout(function() {
+                $("#error-message").removeClass("slide-in-top");
+                $("#error-message").addClass("slide-out-top");
+                setTimeout(function() {
+                  $("#error-message").css("display", "none");
+                  $("#error-message").removeClass("slide-out-top");
+                }, 10);
+              }, 3000);
+            } else if (msisdn.length === 11 && identity.length === 10) {
+              if (!ussdMci || !ussdMtn || !ussdRigh) {
+                $("#error-message").css("display", "flex");
+                $("#error-message").addClass("slide-in-top");
+                $(".error-message").html("شماره همراه صحیح و کامل وارد نمایید");
+                setTimeout(function() {
+                  $("#error-message").removeClass("slide-in-top");
+                  $("#error-message").addClass("slide-out-top");
+                  setTimeout(function() {
+                    $("#error-message").css("display", "none");
+                    $("#error-message").removeClass("slide-out-top");
+                  }, 10);
+                }, 3000);
+              }
+            }
+          }
+        });
+        var msisdn = $("#cellPhone-number").val();
+        msisdn = msisdn.replace("_", "");
+        $("#cellPhone-number").inputmask({
+          regex: "09[0-9۰-۹٠-٩]{9}",
+          allowPlus: false,
+          allowMinus: false,
+          prefix: "09"
+        });
+      });
+    </script>
+  </body>
+</html>
